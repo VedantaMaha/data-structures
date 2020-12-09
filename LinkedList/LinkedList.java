@@ -1,3 +1,5 @@
+package LinkedList;
+
 class Node {
     int data;
     Node next;
@@ -99,7 +101,7 @@ class Main {
         }
         ll.print();
         // ll.remove(5);
-        int seachItem = 32;
-        System.out.printf("data %d is in index %d\n", seachItem, ll.indexOf(seachItem));
+        int searchItem = 32;
+        System.out.printf("data %d is in index %d\n", searchItem, ll.indexOf(searchItem));
     }
 }
