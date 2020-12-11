@@ -1,5 +1,8 @@
 package BinaryTreeDfs;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 class Node {
     int data;
     Node left, right;
@@ -55,7 +58,7 @@ public class BinaryTreeDfs {
         root.print();
 
         Node target = new Node(4);
-        boolean isTargetExist = dfs(root, target);
+        boolean isTargetExist = bfs(root, target);
         System.out.printf("\nthe target exist? %b", isTargetExist);
     }
 
@@ -69,5 +72,35 @@ public class BinaryTreeDfs {
             isExist = dfs(root.right, target);
         }
         return isExist;
+    }
+
+    static boolean bfs(Node root, Node Target) {
+        if (root == null) return false;
+        Queue<Node> nextToVisit = new LinkedList<Node>();
+
+        if (root.right != null) {
+            nextToVisit.add(root.left);
+        }
+        if (root.right != null) {
+            nextToVisit.add(root.right);
+        }
+
+        while (!nextToVisit.isEmpty()) {
+            Node current = nextToVisit.poll();
+            if (current == null) {
+                continue;
+            }
+            if (current.data == Target.data) {
+                return true;
+            }
+            if (current.right != null) {
+                nextToVisit.add(current.left);
+            }
+            if (current.right != null) {
+                nextToVisit.add(current.right);
+            }
+        }
+
+        return false;
     }
 }
