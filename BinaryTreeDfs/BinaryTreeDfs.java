@@ -53,6 +53,21 @@ public class BinaryTreeDfs {
         
         */
         root.print();
-        
+
+        Node target = new Node(4);
+        boolean isTargetExist = dfs(root, target);
+        System.out.printf("\nthe target exist? %b", isTargetExist);
+    }
+
+    static boolean dfs(Node root, Node target) {
+        boolean isExist = false;
+        if (root.data == target.data) isExist = true;
+        if (!isExist && root.left != null) {
+            isExist = dfs(root.left, target);
+        }
+        if (!isExist && root.right != null) {
+            isExist = dfs(root.right, target);
+        }
+        return isExist;
     }
 }
